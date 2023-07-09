@@ -8,11 +8,11 @@ Prerequisites
 Solidity ^0.8.18
 
 Contract Details
-The ErrorHandlingContract contract has a public state variable balance that represents the balance of the contract.
-The constructor initializes the balance variable to zero.
-The deposit function allows users to deposit funds into the contract by increasing the balance. It uses a require() statement to ensure that the amount being deposited is greater than zero.
-The withdraw function allows users to withdraw funds from the contract by reducing the balance. It uses require() statements to check if the amount being withdrawn is greater than zero and if there are sufficient funds (amount <= balance) for the withdrawal. Additionally, it uses a revert() statement to revert the transaction if the amount exceeds a certain limit (in this case, 100).
-The checkBalance function is a view function that returns the current balance of the contract. It uses an assert() statement to ensure that the balance is always greater than or equal to zero.
+The ErrorHandlingContract is a smart contract that manages a balance variable.
+The deposit function allows users to add funds to the balance, but it requires the deposit amount to be greater than zero.
+The withdraw function lets users withdraw funds from the balance, but it checks if the withdrawal amount is greater than the available balance. If it is, the transaction is reverted with an "Insufficient balance" error message.
+The checkBalance function returns the current value of the balance variable, but it also uses an assert statement to ensure the balance is always greater than or equal to zero.
+Overall, the contract implements basic error handling and validation using the require(), assert(), and revert() statements to ensure proper behavior and prevent incorrect operations.
 
 Video Walkthrough
-
+https://www.loom.com/share/f4da2533bb9a4baa8d1f4f998f225c18
