@@ -4,30 +4,31 @@
 
 pragma solidity 0.8.18;
 
-contract DivisionContract {
-    function divideByAssert(uint256 _numerator, uint256 _denominator) external pure returns (uint256) {
-        assert(_denominator != 0); // Assert that the denominator is not zero
+contract ErrorHandlingContract {
+    uint256 public balance;
 
-        uint256 result = _numerator / _denominator;
-
-        return result;
+    constructor() {
+        balance = 0;
     }
 
-    function divideByRequire(uint256 _numerator, uint256 _denominator) external pure returns (uint256) {
-        require(_denominator != 0, "Division by zero not allowed req");
-
-        uint256 result = _numerator / _denominator;
-
-        return result;
+    function deposit(uint256 amount) external {
+        require(amount > 0, "Deposit amount must be greater than zero");
+        balance += amount;
     }
 
-    function divideByRevert(uint256 _numerator, uint256 _denominator) external pure returns (uint256) {
-        if (_denominator == 0) {
-            revert("Division by zero not allowed");
+    function withdraw(uint256 amount) external {
+        require(amount > 0, "Withdrawal amount must be greater than zero");
+        
+        if (amount > balance) {
+            revert("Insufficient balance"); // revert statement
         }
+        else {
+            balance -= amount;
+        }
+    }
 
-        uint256 result = _numerator / _denominator;
-
-        return result;
+    function checkBalance() external view returns (uint256) {
+        assert(balance >= 0); // assert statement
+        return balance;
     }
 }
