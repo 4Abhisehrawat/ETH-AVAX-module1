@@ -8,11 +8,11 @@ Prerequisites
 Solidity ^0.8.18
 
 Contract Details
-The contract includes three functions: divideByAssert, divideByRequire, and divideByRevert.
-The divideByAssert function uses the assert() statement to check if the _denominator is not equal to zero. If the condition is not met, indicating division by zero, the assertion fails, and the transaction reverts.
-The divideByRequire function uses the require() statement to check if the _denominator is not equal to zero. If the condition is not met, indicating division by zero, the function reverts with the provided error message.
-The divideByRevert function uses an if statement to check if the _denominator is equal to zero. If the condition is met, indicating division by zero, the function reverts with the provided error message using the revert() statement.
-After the error handling checks, the division is performed by dividing the _numerator by the _denominator, and the result is returned.
+The ErrorHandlingContract contract has a public state variable balance that represents the balance of the contract.
+The constructor initializes the balance variable to zero.
+The deposit function allows users to deposit funds into the contract by increasing the balance. It uses a require() statement to ensure that the amount being deposited is greater than zero.
+The withdraw function allows users to withdraw funds from the contract by reducing the balance. It uses require() statements to check if the amount being withdrawn is greater than zero and if there are sufficient funds (amount <= balance) for the withdrawal. Additionally, it uses a revert() statement to revert the transaction if the amount exceeds a certain limit (in this case, 100).
+The checkBalance function is a view function that returns the current balance of the contract. It uses an assert() statement to ensure that the balance is always greater than or equal to zero.
 
 Video Walkthrough
-https://www.loom.com/share/771525c2be1e4ed8b3b4992bcdb7ae7e
+
