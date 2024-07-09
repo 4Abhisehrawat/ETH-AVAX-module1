@@ -2,7 +2,7 @@
 
 // write a smart contract that implements the require(), assert() and revert() statements.
 
-pragma solidity 0.8.18;
+pragma solidity 0.8.20;
 
 contract ErrorHandlingContract {
     uint256 public balance;
